@@ -34,9 +34,7 @@ fn move_projectile(mut query: Query<(&ProjectileSpeed, &mut Transform)>) {
 
 fn despawn_outside(mut commands: Commands, query: Query<(Entity, &DespawnBounds, &Transform)>) {
     for (entity, bounds, transform) in query.iter() {
-        println!("{:?}", transform.translation);
         if bounds.outside(transform.translation) {
-            println!("PURGEDDD");
             commands.entity(entity).despawn();
         }
     }

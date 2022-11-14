@@ -2,7 +2,7 @@ use bevy::prelude::*;
 
 use laserscape::{
     Bounds, DespawnBounds, MoveControls, MovementBundle, MovementPlugin, ProjectileBundle,
-    ProjectilePlugin, ProjectileSpeed, Thrust, TurnSpeed, Velocity,
+    ProjectilePlugin, ProjectileSpeed, Thrust, TurnSpeed, Velocity, Weapon, Weapons, WeaponsPlugin
 };
 
 fn main() {
@@ -10,6 +10,7 @@ fn main() {
         .add_plugins(DefaultPlugins)
         .add_plugin(MovementPlugin)
         .add_plugin(ProjectilePlugin)
+        .add_plugin(WeaponsPlugin)
         .add_startup_system(setup)
         .run();
 }
@@ -49,6 +50,20 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>, mut windows: Re
                 right: KeyCode::D,
             },
         },
+        Weapons (
+            vec![
+                // Weapon {
+                //     trigger: KeyCode::U,
+                //     offset: Vec3::splat(-20.0),
+                //     cooldown: Timer::from_seconds(0.05, TimerMode::Once)
+                // },
+                Weapon {
+                    trigger: KeyCode::U,
+                    offset: Vec3{ x: 100.0, y: 5.0, z: 0.0 },
+                    cooldown: Timer::from_seconds(0.05, TimerMode::Once)
+                }
+            ]
+        )
     ));
     commands.spawn((
         SpriteBundle {
