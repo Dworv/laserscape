@@ -35,7 +35,7 @@ fn fire_weapons(mut commands: Commands, asset_server: Res<AssetServer>, keyboard
                     SpriteBundle {
                         texture: asset_server.load("laser.png"),
                         transform: Transform {
-                            translation: transform.translation + transform.rotation. * weapon.offset,
+                            translation: transform.translation + transform.rotation * weapon.offset,
                             rotation: transform.rotation,
                             scale: Vec3::splat(0.05)
                         },
